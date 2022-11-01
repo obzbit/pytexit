@@ -41,7 +41,7 @@ except:
 def py2tex(
     expr,
     print_latex=True,
-    print_formula=True,
+    print_formula=False,
     dummy_var="u",
     output="tex",
     tex_enclosure="$$",
@@ -65,7 +65,7 @@ def py2tex(
         if True, prints the latex expression in the console (Default: True)
 
     print_formula: boolean
-        if True, prints the formula expression in the console (Default: True)
+        if True, prints the formula expression in the console (Default: False)
 
     dummy_var: string
         dummy variable displayed in integrals
