@@ -30,7 +30,7 @@ https://pytexit.readthedocs.io
     :alt: Documentation Status
 
 
-Install
+Install (for original version)
 -------
 
 ``pytexit`` is on PyPi::
