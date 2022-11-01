@@ -37,24 +37,22 @@ try:
 except:
     pass
 
-PRINT_FORMULA, PRINT_LATEX = True, True
-
 
 def py2tex(
     expr,
-    print_latex=None,
-    print_formula=None,
+    print_latex=True,
+    print_formula=True,
     dummy_var="u",
     output="tex",
     tex_enclosure="$$",
-    tex_multiplier=r"\times",
+    tex_multiplier=r"\cdot ",
     simplify_output=True,
     upperscript="ˆ",
     lowerscript="_",
     verbose=False,
     simplify_fractions=False,
     simplify_ints=True,
-    simplify_multipliers=True,
+    simplify_multipliers=False,
 ):
     """Return the LaTeX expression of a Python formula
 
@@ -64,10 +62,10 @@ def py2tex(
         a Python expression
 
     print_latex: boolean
-        if True, prints the latex expression in the console
+        if True, prints the latex expression in the console (Default: True)
 
     print_formula: boolean
-        if True, prints the formula expression in the console
+        if True, prints the formula expression in the console (Default: True)
 
     dummy_var: string
         dummy variable displayed in integrals
@@ -84,9 +82,9 @@ def py2tex(
     tex_multiplier: raw string
         multiplication operator for latex formula.
 
-        r'\times':   2*2 -> 2 x 2 (Default)
+        r'\times ':  2*2 -> 2 x 2
         r'{\times}': 2*2 -> 2x2
-        r'\cdot':    2*2 -> 2 · 2
+        r'\cdot ':   2*2 -> 2 · 2 (Default)
         r'{\cdot}':  2*2 -> 2·2
 
     Other Parameters
@@ -119,10 +117,10 @@ def py2tex(
     simplify_multipliers: boolean
         if ``True``, simplify float multipliers during parsing. Ex::
 
-            2*a  -> 2a
+            2*a*b  -> 2ab
 
         See :class:`~pytexit.core.core.LatexVisitor` for more information.
-        Default ``True``
+        Default ``False``
 
 
     Returns
@@ -158,12 +156,6 @@ def py2tex(
     - sympy can also write LaTeX output.
 
     """
-
-    # Check print globals
-    if PRINT_FORMULA is None:
-        print_formula = PRINT_FORMULA
-    if PRINT_LATEX is None:
-        print_latex = PRINT_LATEX
 
     # Check inputs
     try:
