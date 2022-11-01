@@ -473,6 +473,10 @@ class LatexVisitor(ast.NodeVisitor):
             left = self.visit(n.left)
         if self.prec(n.op) > self.prec(n.right):
             right = self.parenthesis(self.visit(n.right))
+        elif isinstance(n.op, ast.Add) and self.prec(n.op) == self.prec(n.right): #Try to keep +()
+            right = self.parenthesis(self.visit(n.right))            
+        elif isinstance(n.op, ast.Sub) and self.prec(n.op) == self.prec(n.right): #Try to keep -():
+            right = self.parenthesis(self.visit(n.right))
         else:
             right = self.visit(n.right)
 
