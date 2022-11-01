@@ -3,6 +3,8 @@
 `pytexit <https://pytexit.readthedocs.io>`__
 ============================================
 
+This is a customized version of `erwanp/pytexit <https://github.com/erwanp/pytexit>`_
+
 Convert a Python expression to a LaTeX formula
 
 
