@@ -565,7 +565,10 @@ class LatexVisitor(ast.NodeVisitor):
         return "+"
 
     def visit_Mult(self, n):
-        return r" "
+        if self.simplify_multipliers:
+            return r" "
+        else:
+            return self.tex_multiplier
 
     def visit_Mod(self, n):
         return "\\bmod"
